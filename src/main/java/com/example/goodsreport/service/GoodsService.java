@@ -30,13 +30,13 @@ public class GoodsService {
             if (!Strings.isNullOrEmpty(line)) {
                 goodsDto.setNameGoods(partOfLine[0]);
                 try {
-                    goodsDto.setDate(LocalDate.parse((partOfLine[1])));
+                    goodsDto.setDate(LocalDate.parse((partOfLine[1]), DateTimeFormatter.ofPattern("dd.MM.yyyy")));
                 } catch (DateTimeException dte) {
                     goodsDto.setDate(LocalDate.now());
                 }
-                if (partOfLine.length>2){
+                if (partOfLine.length > 2) {
                     goodsDto.setPrice(Integer.parseInt(partOfLine[2]));
-                } else{
+                } else {
                     goodsDto.setPrice(0);
                 }
                 goodsDtoList.add(goodsDto);
